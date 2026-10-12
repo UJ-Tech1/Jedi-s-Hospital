@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apollo Hospital — Quality Healthcare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav aria-label="Main navigation">
+  <div class="nav-brand">
+    <!-- Medical cross SVG icon -->
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="8" fill="#2563EB"/>
+      <rect x="15" y="8" width="6" height="20" rx="3" fill="white"/>
+      <rect x="8" y="15" width="20" height="6" rx="3" fill="white"/>
+    </svg>
+    <span>Apollo Hospital</span>
+  </div>
+
+  <ul class="nav-links" role="list">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#what-we-do">About Us</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Find Doctors</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <button class="btn-primary" aria-label="Get an appointment">Get Appointment</button>
+    <button class="nav-icon-btn" aria-label="User profile">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<main>
+<section class="hero" id="hero" aria-labelledby="hero-heading">
+  <div class="hero-text">
+    <div class="hero-badge" role="img" aria-label="Trusted by 1000+ patients, 5 stars">
+      <span class="stars">★★★★★</span>
+      Trusted by 1000+ Patients
+    </div>
+    <h1 id="hero-heading">
+      We bring <span class="highlight">quality healthcare</span> closer to you and your family
+    </h1>
+    <p>Access your reports, book seats, manage appointments, and stay connected with your doctors — anytime, anywhere.</p>
+    <button class="btn-primary" aria-label="Access patient portal">Patient Portal</button>
+  </div>
+
+  <div class="hero-images" aria-label="Hospital imagery">
+    <img src="https://placehold.co/400x320?text=Doctor+Consulting" alt="Doctor consulting with patient in a modern clinic" loading="eager" />
+    <img src="https://placehold.co/400x320?text=Medical+Professional" alt="Medical professional reviewing patient records" loading="eager" />
+    <img src="https://placehold.co/400x320?text=Hospital+Facility" alt="State-of-the-art hospital facility" loading="eager" />
+  </div>
+</section>
+
+<!-- ===== WHAT WE DO ===== -->
+<section class="what-we-do fade-section" id="what-we-do" aria-labelledby="whatwedo-heading">
+  <div class="what-left">
+    <span class="what-label">What we do</span>
+    <h2 id="whatwedo-heading">Providing world-class care across all specialties</h2>
+    <p>
+      Our hospital offers a comprehensive range of medical services — from <strong>General Practice</strong> and
+      <strong>Cardiology</strong> to <strong>Pediatrics</strong>, <strong>Radiology</strong>,
+      <strong>Gynecology</strong>, <strong>Lab Tests</strong>, and <strong>Mental Health</strong> — all under one roof,
+      delivered by highly qualified specialists committed to your wellbeing.
+    </p>
+    <div class="stats-grid" aria-label="Key statistics">
+      <div class="stat-card">
+        <div class="stat-number" data-target="10000" data-suffix="+">0</div>
+        <div class="stat-label">Verified Doctors</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="200" data-suffix="+">0</div>
+        <div class="stat-label">Specialties</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="50000" data-suffix="+">0</div>
+        <div class="stat-label">Successful Appointments</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" data-target="49" data-suffix="/5★" data-decimal="true">0</div>
+        <div class="stat-label">Patient Satisfaction</div>
+      </div>
+    </div>
+  </div>
+  <div class="what-right">
+    <img src="https://placehold.co/500x480?text=Patient+Care" alt="Doctor assisting patient in wheelchair — compassionate care" loading="lazy" />
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services fade-section" id="services" aria-labelledby="services-heading">
+  <div class="section-header">
+    <h2 id="services-heading">Comprehensive Care for Every Need</h2>
+    <p>From routine checkups to advanced treatments, our experts are here for all your health needs.</p>
+  </div>
+
+  <div class="services-grid">
+    <!-- General Services -->
+    <article class="service-card blue" aria-labelledby="svc1">
+      <div class="service-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+      </div>
+      <h3 id="svc1">General Services</h3>
+      <p>Primary care, preventive health checks, vaccinations, and routine consultations for all ages.</p>
+    </article>
+
+    <!-- Cardiology -->
+    <article class="service-card pink" aria-labelledby="svc2">
+      <div class="service-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </div>
+      <h3 id="svc2">Cardiology</h3>
+      <p>Advanced diagnostics, ECG, echocardiography, and expert heart disease management by board-certified cardiologists.</p>
+    </article>
+
+    <!-- Laboratory -->
+    <article class="service-card purple" aria-labelledby="svc3">
+      <div class="service-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0a5 5 0 0 0 5 5 5 5 0 0 0 5-5V9M9 14H3"/>
+        </svg>
+      </div>
+      <h3 id="svc3">Laboratory Services</h3>
+      <p>Full blood panels, pathology, microbiology, and rapid diagnostic testing with quick turnaround.</p>
+    </article>
+
+    <!-- Pediatrics -->
+    <article class="service-card yellow" aria-labelledby="svc4">
+      <div class="service-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M8 14s-4 1.5-4 6h16c0-4.5-4-6-4-6"/>
+          <path d="M12 12v2"/>
+        </svg>
+      </div>
+      <h3 id="svc4">Pediatrics</h3>
+      <p>Child health monitoring, growth assessments, immunizations, and compassionate care for newborns to teens.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials" id="testimonials" aria-labelledby="testi-heading">
+  <div class="section-header fade-section">
+    <h2 id="testi-heading">What Our Patients Say</h2>
+    <p>Real experiences from real patients — our community speaks for the care they received.</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <!-- Card 1 — slide from left -->
+    <article class="testi-card slide-left" aria-label="Testimonial from Aisha M.">
+      <div class="testi-header">
+        <img class="testi-avatar" src="https://placehold.co/100x100?text=Aisha" alt="Aisha M. patient avatar" loading="lazy" />
+        <div>
+          <div class="testi-name">Aisha M.</div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-time">5 minutes ago</div>
+        </div>
+      </div>
+      <p class="testi-text">"The staff here are incredibly kind. My diagnosis was clear, my treatment was fast, and I felt genuinely cared for throughout my entire visit. Highly recommend!"</p>
+    </article>
+
+    <!-- Card 2 — slide from right -->
+    <article class="testi-card slide-right" aria-label="Testimonial from Robin T.">
+      <div class="testi-header">
+        <img class="testi-avatar" src="https://placehold.co/100x100?text=Robin" alt="Robin T. patient avatar" loading="lazy" />
+        <div>
+          <div class="testi-name">Robin T.</div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-time">5 minutes ago</div>
+        </div>
+      </div>
+      <p class="testi-text">"Booked my cardiology appointment online in under two minutes. The patient portal is seamless and the doctors are world-class. Best hospital experience I've had."</p>
+    </article>
+
+    <!-- Card 3 — slide from left -->
+    <article class="testi-card slide-left" aria-label="Testimonial from Tanvir H." style="transition-delay: 0.15s;">
+      <div class="testi-header">
+        <img class="testi-avatar" src="https://placehold.co/100x100?text=Tanvir" alt="Tanvir H. patient avatar" loading="lazy" />
+        <div>
+          <div class="testi-name">Tanvir H.</div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-time">5 minutes ago</div>
+        </div>
+      </div>
+      <p class="testi-text">"Brought my son for pediatric care and the team made him feel so comfortable. The facilities are modern, clean, and the follow-up was thorough. Five stars!"</p>
+    </article>
+
+    <!-- Card 4 — slide from right -->
+    <article class="testi-card slide-right" aria-label="Testimonial from Shaila K." style="transition-delay: 0.15s;">
+      <div class="testi-header">
+        <img class="testi-avatar" src="https://placehold.co/100x100?text=Shaila" alt="Shaila K. patient avatar" loading="lazy" />
+        <div>
+          <div class="testi-name">Shaila K.</div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-time">5 minutes ago</div>
+        </div>
+      </div>
+      <p class="testi-text">"Lab results were in my portal within hours. The gynecology department is professional and respectful. I finally found a hospital I genuinely trust with my health."</p>
+    </article>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq fade-section" id="faq" aria-labelledby="faq-heading">
+  <div class="section-header">
+    <h2 id="faq-heading">Got questions? We've got answers</h2>
+    <p>Everything you need to know before, during, and after your visit.</p>
+  </div>
+
+  <div class="faq-list" role="list">
+
+    <div class="faq-item" role="listitem">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
+        What should I bring to my appointment?
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer" id="faq-a1" role="region">
+        Please bring a valid photo ID, your insurance card, a list of current medications, and any prior medical records or test results related to your visit. Arriving 10–15 minutes early helps the check-in process run smoothly.
+      </div>
+    </div>
+
+    <div class="faq-item" role="listitem">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
+        How do I book an appointment online?
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer" id="faq-a2" role="region">
+        Click the "Patient Portal" or "Get Appointment" button on this page. You'll be guided through selecting your specialty, preferred doctor, and available time slot. Confirmation is sent instantly via email and SMS.
+      </div>
+    </div>
+
+    <div class="faq-item" role="listitem">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
+        Can I reschedule my appointment?
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer" id="faq-a3" role="region">
+        Yes. Log into the Patient Portal, navigate to "My Appointments," and select "Reschedule." Changes can be made up to 2 hours before your scheduled time. You can also call our helpline at +1 (800) 123-4567.
+      </div>
+    </div>
+
+    <div class="faq-item" role="listitem">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
+        Are your doctors board-certified?
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer" id="faq-a4" role="region">
+        All of our physicians are board-certified in their respective specialties and undergo continuous professional development. Our credentialing process exceeds national standards to ensure the highest quality of care.
+      </div>
+    </div>
+
+    <div class="faq-item" role="listitem">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
+        Do you accept insurance?
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer" id="faq-a5" role="region">
+        We accept most major insurance plans including BlueCross BlueShield, Aetna, Cigna, UnitedHealthcare, and Medicare. Contact our billing department or check the Patient Portal to verify your specific plan coverage.
+      </div>
+    </div>
+
+    <div class="faq-item" role="listitem">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">
+        How do I access my medical reports?
+        <span class="faq-toggle" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer" id="faq-a6" role="region">
+        All lab results, imaging reports, and visit summaries are available in your secure Patient Portal within 24–48 hours. Log in with your credentials, go to "My Records," and download or share them directly with your care team.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-banner fade-section" id="cta" aria-labelledby="cta-heading">
+  <img src="https://placehold.co/500x420?text=Compassionate+Care" alt="Compassionate doctor supporting elderly patient" loading="lazy" />
+  <div class="cta-content">
+    <h2 id="cta-heading">Your Health Journey <em>Starts Here</em></h2>
+    <p>
+      At Tower Hospital, we are committed to delivering safe, ethical, and patient-centred care every step of the way.
+      Whether it's a routine check-up or a complex procedure, our dedicated specialists are ready to walk this journey with you.
+      Your wellbeing is our highest priority — now and always.
+    </p>
+    <button class="btn-primary" aria-label="Get an appointment now">
+      Get Appointment &rarr;
+    </button>
+  </div>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer aria-label="Site footer">
+  <div class="footer-grid">
+    <!-- Column 1: Brand -->
+    <div>
+      <div class="footer-brand">
+        <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <rect width="36" height="36" rx="8" fill="#2563EB"/>
+          <rect x="15" y="8" width="6" height="20" rx="3" fill="white"/>
+          <rect x="8" y="15" width="20" height="6" rx="3" fill="white"/>
+        </svg>
+        <span>Tower Hospital</span>
+      </div>
+      <p class="footer-tagline">Compassionate Care, Advanced Medicine — serving our community with integrity since 1998.</p>
+      <div class="social-row" aria-label="Social media links">
+        <!-- Pinterest -->
+        <a href="#" class="social-btn" aria-label="Pinterest">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="#" class="social-btn" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <!-- Facebook -->
+        <a href="#" class="social-btn" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Column 2: Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#what-we-do">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Find Doctors</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Our Services -->
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="#services">General Practice</a></li>
+        <li><a href="#services">Cardiology</a></li>
+        <li><a href="#services">Pediatrics</a></li>
+        <li><a href="#services">Radiology</a></li>
+        <li><a href="#services">Gynecology</a></li>
+        <li><a href="#services">Lab Tests</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 4: Contact -->
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.4 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.06 6.06l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +1 (800) 123-4567
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@towerhospital.com
+      </div>
+      <div class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        123 Health Ave, Medical City, CA 90001
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 TowerCare Hospital. All rights reserved. Committed to safe, ethical, and patient-centered care.</p>
+  </div>
+</footer>
+
+<!-- ===== COMING SOON MODAL ===== -->
+<div class="modal-overlay" id="comingSoonModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+    <div class="modal-icon" aria-hidden="true">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    </div>
+    <h2 id="modalTitle">Coming Soon</h2>
+    <p>We're working hard to bring this feature to you. Stay tuned — it'll be ready before you know it!</p>
+    <button class="btn-primary modal-ok" id="modalOk">Got it</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
