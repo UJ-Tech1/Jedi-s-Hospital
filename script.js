@@ -162,10 +162,8 @@
   });
 
   // ── Intercept nav icon (profile button) ──
-  document.querySelector('.nav-icon-btn')?.addEventListener('click', function (e) {
-    e.preventDefault();
-    openModal();
-  });
+  // Now handled by the auth modal — skip it here
+  // document.querySelector('.nav-icon-btn')?.addEventListener('click', ...)
 
   // ── Intercept footer & nav links that would navigate away ──
   // These are links pointing to # (social) or internal anchor links
@@ -196,4 +194,250 @@
       });
     }
   });
+})();
+
+/* ─────────────────────────────────────────
+   7. AUTH MODAL — Login & Sign Up
+───────────────────────────────────────── */
+(function () {
+
+  /* ── DOM refs ── */
+  const authModal       = document.getElementById('authModal');
+  const authClose       = document.getElementById('authModalClose');
+  const openAuthBtn     = document.getElementById('openAuthBtn');
+
+  const tabLogin        = document.getElementById('tabLogin');
+  const tabSignup       = document.getElementById('tabSignup');
+  const panelLogin      = document.getElementById('panelLogin');
+  const panelSignup     = document.getElementById('panelSignup');
+  const panelSuccess    = document.getElementById('panelSuccess');
+  const panelLoginSuccess = document.getElementById('panelLoginSuccess');
+
+  const loginForm       = document.getElementById('loginForm');
+  const signupForm      = document.getElementById('signupForm');
+  const goToSignup      = document.getElementById('goToSignup');
+  const goToLogin       = document.getElementById('goToLogin');
+  const doneBtn         = document.getElementById('doneBtn');
+  const loginDoneBtn    = document.getElementById('loginDoneBtn');
+  const copyUID         = document.getElementById('copyUID');
+  const generatedUID    = document.getElementById('generatedUID');
+
+  /* ── Helpers ── */
+  function openAuth(startTab) {
+    authModal.classList.add('active');
+    authModal.setAttribute('aria-hidden', 'false');
+    if (startTab === 'signup') switchTab('signup');
+    else switchTab('login');
+  }
+
+  function closeAuth() {
+    authModal.classList.remove('active');
+    authModal.setAttribute('aria-hidden', 'true');
+    // Reset to login panel after a short delay
+    setTimeout(() => {
+      switchTab('login');
+      loginForm.reset();
+      signupForm.reset();
+      clearErrors();
+      hidePanel(panelSuccess);
+      hidePanel(panelLoginSuccess);
+      showPanel(panelLogin);
+    }, 300);
+  }
+
+  function showPanel(panel) { panel.classList.remove('hidden'); }
+  function hidePanel(panel) { panel.classList.add('hidden'); }
+
+  function switchTab(tab) {
+    hidePanel(panelSuccess);
+    hidePanel(panelLoginSuccess);
+    if (tab === 'login') {
+      tabLogin.classList.add('active');
+      tabSignup.classList.remove('active');
+      tabLogin.setAttribute('aria-selected', 'true');
+      tabSignup.setAttribute('aria-selected', 'false');
+      showPanel(panelLogin);
+      hidePanel(panelSignup);
+    } else {
+      tabSignup.classList.add('active');
+      tabLogin.classList.remove('active');
+      tabSignup.setAttribute('aria-selected', 'true');
+      tabLogin.setAttribute('aria-selected', 'false');
+      showPanel(panelSignup);
+      hidePanel(panelLogin);
+    }
+  }
+
+  function clearErrors() {
+    document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
+    document.querySelectorAll('.input-error').forEach(e => e.classList.remove('input-error'));
+  }
+
+  function showError(inputEl, errEl, msg) {
+    inputEl.classList.add('input-error');
+    errEl.textContent = msg;
+  }
+
+  /* ── Unique ID generator ──
+     Format: AH-{gender prefix}-{6 alphanumeric chars}
+     e.g. AH-M-4A2B9C  |  AH-F-7XK3PQ  |  AH-O-2ZR8LM
+  */
+  function generateUID(gender) {
+    const prefix = gender === 'Male' ? 'M' : gender === 'Female' ? 'F' : 'O';
+    const chars  = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = '';
+    // Use crypto.getRandomValues for better randomness
+    const arr = new Uint8Array(6);
+    window.crypto.getRandomValues(arr);
+    arr.forEach(byte => { code += chars[byte % chars.length]; });
+    return `AH-${prefix}-${code}`;
+  }
+
+  /* ── Store registered users in localStorage (demo only) ── */
+  function getUsers() {
+    try { return JSON.parse(localStorage.getItem('ah_users') || '[]'); }
+    catch { return []; }
+  }
+  function saveUser(user) {
+    const users = getUsers();
+    users.push(user);
+    localStorage.setItem('ah_users', JSON.stringify(users));
+  }
+  function findUser(email, uid) {
+    return getUsers().find(u =>
+      u.email.toLowerCase() === email.toLowerCase() && u.uid === uid.toUpperCase()
+    );
+  }
+
+  /* ── Open auth from profile button ── */
+  openAuthBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation(); // prevent coming-soon modal from also firing
+    openAuth('login');
+  });
+
+  /* ── Close triggers ── */
+  authClose.addEventListener('click', closeAuth);
+  authModal.addEventListener('click', (e) => { if (e.target === authModal) closeAuth(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && authModal.classList.contains('active')) closeAuth();
+  });
+
+  /* ── Tab switching ── */
+  tabLogin.addEventListener('click',  () => switchTab('login'));
+  tabSignup.addEventListener('click', () => switchTab('signup'));
+  goToSignup.addEventListener('click', () => switchTab('signup'));
+  goToLogin.addEventListener('click',  () => switchTab('login'));
+
+  /* ── Done / Continue buttons ── */
+  doneBtn.addEventListener('click', closeAuth);
+  loginDoneBtn.addEventListener('click', closeAuth);
+
+  /* ── Copy UID ── */
+  copyUID.addEventListener('click', () => {
+    const text = generatedUID.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      copyUID.classList.add('copied');
+      copyUID.textContent = '✓ Copied!';
+      setTimeout(() => {
+        copyUID.classList.remove('copied');
+        copyUID.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy ID`;
+      }, 2000);
+    });
+  });
+
+  /* ── SIGN UP form submit ── */
+  signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    clearErrors();
+
+    const firstName = document.getElementById('signupFirstName');
+    const lastName  = document.getElementById('signupLastName');
+    const email     = document.getElementById('signupEmail');
+    const genderEl  = signupForm.querySelector('input[name="signupGender"]:checked');
+
+    let valid = true;
+
+    if (!firstName.value.trim()) {
+      showError(firstName, document.getElementById('signupFirstNameErr'), 'First name is required.');
+      valid = false;
+    }
+    if (!lastName.value.trim()) {
+      showError(lastName, document.getElementById('signupLastNameErr'), 'Last name is required.');
+      valid = false;
+    }
+    if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      showError(email, document.getElementById('signupEmailErr'), 'Enter a valid email address.');
+      valid = false;
+    }
+    if (!genderEl) {
+      document.getElementById('signupGenderErr').textContent = 'Please select a gender.';
+      valid = false;
+    }
+
+    // Check if email already registered
+    const existing = getUsers().find(u => u.email.toLowerCase() === email.value.toLowerCase());
+    if (existing) {
+      showError(email, document.getElementById('signupEmailErr'), 'This email is already registered. Please log in.');
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    // Generate UID & store
+    const uid  = generateUID(genderEl.value);
+    const user = {
+      firstName : firstName.value.trim(),
+      lastName  : lastName.value.trim(),
+      email     : email.value.trim().toLowerCase(),
+      gender    : genderEl.value,
+      uid       : uid,
+      createdAt : new Date().toISOString()
+    };
+    saveUser(user);
+
+    // Show success panel
+    document.getElementById('successName').textContent =
+      `Welcome, ${user.firstName}! 🎉`;
+    generatedUID.textContent = uid;
+    hidePanel(panelSignup);
+    showPanel(panelSuccess);
+  });
+
+  /* ── LOGIN form submit ── */
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    clearErrors();
+
+    const email = document.getElementById('loginEmail');
+    const uid   = document.getElementById('loginUID');
+    let valid   = true;
+
+    if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      showError(email, document.getElementById('loginEmailErr'), 'Enter a valid email address.');
+      valid = false;
+    }
+    if (!uid.value.trim()) {
+      showError(uid, document.getElementById('loginUIDErr'), 'Your unique ID is required.');
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    const user = findUser(email.value, uid.value.trim());
+
+    if (!user) {
+      showError(uid, document.getElementById('loginUIDErr'),
+        'Email and ID don\'t match any account. Check your details or sign up.');
+      return;
+    }
+
+    // Show login success
+    document.getElementById('loginWelcomeName').textContent = `Welcome back, ${user.firstName}! 👋`;
+    document.getElementById('loginWelcomeSub').textContent =
+      `Signed in as ${user.email}`;
+    hidePanel(panelLogin);
+    showPanel(panelLoginSuccess);
+  });
+
 })();
