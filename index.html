@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apollo Hospital — Quality Healthcare</title>
+  <title>HealthMatters — Quality Healthcare</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet" />
@@ -20,7 +20,7 @@
       <rect x="15" y="8" width="6" height="20" rx="3" fill="white"/>
       <rect x="8" y="15" width="20" height="6" rx="3" fill="white"/>
     </svg>
-    <span>Apollo Hospital</span>
+    <span>HealthMatters</span>
   </div>
 
   <ul class="nav-links" role="list">
@@ -54,13 +54,13 @@
       We bring <span class="highlight">quality healthcare</span> closer to you and your family
     </h1>
     <p>Access your reports, book seats, manage appointments, and stay connected with your doctors — anytime, anywhere.</p>
-    <button class="btn-primary" aria-label="Access patient portal">Patient Portal</button>
+    <button class="btn-primary" id="patientPortalBtn" aria-label="Access patient portal">Patient Portal</button>
   </div>
 
   <div class="hero-images" aria-label="Hospital imagery">
     <img src="https://placehold.co/400x320?text=Doctor+Consulting" alt="Doctor consulting with patient in a modern clinic" loading="eager" />
     <img src="https://placehold.co/400x320?text=Medical+Professional" alt="Medical professional reviewing patient records" loading="eager" />
-    <img src="https://placehold.co/400x320?text=Hospital+Facility" alt="State-of-the-art hospital facility" loading="eager" />
+    <img src="images.jpg" alt="State-of-the-art hospital facility" loading="eager" />
   </div>
 </section>
 
@@ -295,7 +295,7 @@
   <div class="cta-content">
     <h2 id="cta-heading">Your Health Journey <em>Starts Here</em></h2>
     <p>
-      At Tower Hospital, we are committed to delivering safe, ethical, and patient-centred care every step of the way.
+      At HealthMatters, we are committed to delivering safe, ethical, and patient-centred care every step of the way.
       Whether it's a routine check-up or a complex procedure, our dedicated specialists are ready to walk this journey with you.
       Your wellbeing is our highest priority — now and always.
     </p>
@@ -317,7 +317,7 @@
           <rect x="15" y="8" width="6" height="20" rx="3" fill="white"/>
           <rect x="8" y="15" width="20" height="6" rx="3" fill="white"/>
         </svg>
-        <span>Tower Hospital</span>
+        <span>HealthMatters</span>
       </div>
       <p class="footer-tagline">Compassionate Care, Advanced Medicine — serving our community with integrity since 1998.</p>
       <div class="social-row" aria-label="Social media links">
@@ -381,7 +381,7 @@
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; 2025 TowerCare Hospital. All rights reserved. Committed to safe, ethical, and patient-centered care.</p>
+    <p>&copy; 2025 HealthMatters. All rights reserved. Committed to safe, ethical, and patient-centered care.</p>
   </div>
 </footer>
 
@@ -404,7 +404,7 @@
         </svg>
       </div>
       <h2 id="authModalTitle">Welcome back</h2>
-      <p class="auth-sub">Sign in to access your health portal</p>
+      <p class="auth-sub">Sign in to access your HealthMatters portal</p>
 
       <form id="loginForm" novalidate autocomplete="off">
         <div class="form-group">
@@ -437,7 +437,7 @@
         <div class="form-row">
           <div class="form-group">
             <label for="signupFirstName">First Name</label>
-            <input type="text" id="signupFirstName" name="signupFirstName" placeholder="John" required autocomplete="given-name" />
+            <input type="text" id="signupFirstName" name="signupFirstName" placeholder="Rebecca" required autocomplete="given-name" />
             <span class="field-error" id="signupFirstNameErr"></span>
           </div>
           <div class="form-group">
@@ -513,6 +513,30 @@
       <button class="btn-primary auth-submit-btn" id="loginDoneBtn">Continue</button>
     </div>
 
+  </div>
+</div>
+
+<!-- ===== GET APPOINTMENT MODAL ===== -->
+<div class="modal-overlay" id="appointmentModal" role="dialog" aria-modal="true" aria-labelledby="appointmentModalTitle" aria-hidden="true">
+  <div class="modal-box appt-modal-box">
+    <button class="modal-close" id="appointmentModalClose" aria-label="Close modal">&times;</button>
+    <div class="modal-icon appt-icon" aria-hidden="true">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+    </div>
+    <h2 id="appointmentModalTitle">Book an Appointment</h2>
+    <p>To schedule your appointment, please sign in to your account or create a new one — it only takes a minute.</p>
+    <div class="appt-btn-row">
+      <button class="btn-outline-blue" id="apptLoginBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        Log In
+      </button>
+      <button class="btn-primary appt-signup-btn" id="apptSignupBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="16" y1="11" x2="22" y2="11"/></svg>
+        Sign Up
+      </button>
+    </div>
   </div>
 </div>
 

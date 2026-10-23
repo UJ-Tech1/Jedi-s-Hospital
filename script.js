@@ -149,17 +149,10 @@
     if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
   });
 
-  // ── Intercept all CTA buttons ──
-  // "Get Appointment" and "Patient Portal" buttons
-  document.querySelectorAll('.btn-primary').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      // Only intercept if it's not already inside the modal
-      if (!btn.closest('#comingSoonModal')) {
-        e.preventDefault();
-        openModal();
-      }
-    });
-  });
+  // ── Intercept all CTA buttons EXCEPT Patient Portal ──
+  // "Get Appointment" buttons are now handled by the appointment modal IIFE below.
+  // "Patient Portal" is handled by the auth modal.
+  // Nothing to intercept here for btn-primary.
 
   // ── Intercept nav icon (profile button) ──
   // Now handled by the auth modal — skip it here
@@ -316,6 +309,16 @@
     openAuth('login');
   });
 
+  /* ── Open auth from Patient Portal button ── */
+  const patientPortalBtn = document.getElementById('patientPortalBtn');
+  if (patientPortalBtn) {
+    patientPortalBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation(); // prevent coming-soon modal from also firing
+      openAuth('login');
+    });
+  }
+
   /* ── Close triggers ── */
   authClose.addEventListener('click', closeAuth);
   authModal.addEventListener('click', (e) => { if (e.target === authModal) closeAuth(); });
@@ -440,4 +443,70 @@
     showPanel(panelLoginSuccess);
   });
 
+})();
+
+/* ─────────────────────────────────────────
+   8. GET APPOINTMENT MODAL
+───────────────────────────────────────── */
+(function () {
+  const apptModal  = document.getElementById('appointmentModal');
+  const apptClose  = document.getElementById('appointmentModalClose');
+  const loginBtn   = document.getElementById('apptLoginBtn');
+  const signupBtn  = document.getElementById('apptSignupBtn');
+
+  function openAppt() {
+    apptModal.classList.add('active');
+    apptModal.setAttribute('aria-hidden', 'false');
+  }
+  function closeAppt() {
+    apptModal.classList.remove('active');
+    apptModal.setAttribute('aria-hidden', 'true');
+  }
+
+  // Open on all "Get Appointment" buttons (exclude Patient Portal & modal-internal)
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    if (
+      btn.id !== 'patientPortalBtn' &&
+      !btn.closest('#comingSoonModal') &&
+      !btn.closest('#appointmentModal') &&
+      !btn.closest('#authModal')
+    ) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openAppt();
+      });
+    }
+  });
+
+  // Close triggers
+  apptClose.addEventListener('click', closeAppt);
+  apptModal.addEventListener('click', (e) => { if (e.target === apptModal) closeAppt(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && apptModal.classList.contains('active')) closeAppt();
+  });
+
+  // "Log In" → close appt modal, open auth on login tab
+  loginBtn.addEventListener('click', () => {
+    closeAppt();
+    setTimeout(() => {
+      const authModal = document.getElementById('authModal');
+      authModal.classList.add('active');
+      authModal.setAttribute('aria-hidden', 'false');
+      // Switch to login tab
+      document.getElementById('tabLogin').click();
+    }, 180);
+  });
+
+  // "Sign Up" → close appt modal, open auth on signup tab
+  signupBtn.addEventListener('click', () => {
+    closeAppt();
+    setTimeout(() => {
+      const authModal = document.getElementById('authModal');
+      authModal.classList.add('active');
+      authModal.setAttribute('aria-hidden', 'false');
+      // Switch to signup tab
+      document.getElementById('tabSignup').click();
+    }, 180);
+  });
 })();

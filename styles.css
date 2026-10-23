@@ -703,6 +703,10 @@
 }
 .modal-ok {
   min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 /* ===== AUTH MODAL ===== */
@@ -941,4 +945,48 @@
 @media (max-width: 540px) {
   .auth-modal-box { padding: 1.5rem 1.2rem 1.8rem; }
   .form-row { grid-template-columns: 1fr; }
+}
+
+/* ===== APPOINTMENT MODAL ===== */
+.appt-modal-box {
+  max-width: 420px;
+  text-align: center;
+}
+.appt-icon {
+  background: #EEF4FF;
+}
+.appt-btn-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 1.4rem;
+}
+.btn-outline-blue {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 24px;
+  border: 2px solid #2563EB;
+  border-radius: 100px;
+  background: transparent;
+  color: #2563EB;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+.btn-outline-blue:hover {
+  background: #EFF6FF;
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(37,99,235,0.15);
+}
+.appt-signup-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+@media (max-width: 420px) {
+  .appt-btn-row { flex-direction: column; }
+  .btn-outline-blue, .appt-signup-btn { justify-content: center; }
 }
