@@ -398,6 +398,7 @@
       color: var(--navy);
     }
     .testi-stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 1px; }
+    .testi-stars::before { content: '★★★★★'; }
     .testi-time {
       font-size: 0.75rem;
       color: var(--text-muted);
